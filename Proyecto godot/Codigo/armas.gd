@@ -1,12 +1,16 @@
 extends Area2D
 
-tool
 export (PackedScene) var balas
 
 export (float,0,2,0.1) var Cad 
 
 onready var cadencia = $cadencia
 onready var contenedor = $contenedor
+
+export var danio = 20
+
+var cargador = 6
+
 
 var raton = Vector2()
 
@@ -27,10 +31,11 @@ func _input(event):
 
 func disparar():
 	var a = balas.instance()
+	
+	a.set_danio(danio)
+	
 	var dir = cartesian2polar(raton.x,raton.y)
 	var pos = $Sprite/mira.get_global_position()
-	contenedor.add_child(a)
+	self.get_tree().get_root().add_child(a)
 	a.iniciar(pos, dir.y)
-	print(pos,get_position())
-
 

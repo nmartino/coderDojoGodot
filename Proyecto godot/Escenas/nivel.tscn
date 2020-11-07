@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Escenas/zombie.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Codigo/spawner.gd" type="Script" id=2]
+[ext_resource path="res://Escenas/coderDojo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Codigo/Camera2D.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 263.146, 262.895 )
+
+[node name="nivel" type="Node2D"]
+
+[node name="spawner_zombie" type="Node2D" parent="."]
+script = ExtResource( 2 )
+zombies = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="spawner_zombie"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawner_zombie/Area2D"]
+position = Vector2( 905.097, 557.2 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="spawner_zombie"]
+autostart = true
+
+[node name="contenedor" type="Node2D" parent="spawner_zombie"]
+
+[node name="Jugador" parent="." instance=ExtResource( 3 )]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+script = ExtResource( 4 )
+[connection signal="timeout" from="spawner_zombie/Timer" to="spawner_zombie" method="_on_Timer_timeout"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Codigo/armas.gd" type="Script" id=1]
 [ext_resource path="res://Escenas/Bala.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/armas/gun.png" type="Texture" id=3]
 [ext_resource path="res://Escenas/Sprite.gd" type="Script" id=4]
 
 [node name="armas" type="Area2D"]
@@ -13,7 +14,8 @@ __meta__ = {
 balas = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-rotation = 4.16673
+rotation = -31.2694
+texture = ExtResource( 3 )
 script = ExtResource( 4 )
 
 [node name="mira" type="Position2D" parent="Sprite"]
